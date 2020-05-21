@@ -9,7 +9,10 @@ write_files:
     owner: root:root
     permissions: "0600"
     content: ${public_key}
+packages:
+  - python3-pip
 runcmd:
   - mv /opt/id_rsa* /home/ubuntu/.ssh/
   - chown ubuntu:ubuntu /home/ubuntu/.ssh/id_rsa
   - chown ubuntu:ubuntu /home/ubuntu/.ssh/id_rsa.pub
+  - pip3 install ansible==2.9.6
