@@ -7,7 +7,7 @@ data "template_cloudinit_config" "bastion_config" {
   base64_encode = true
   part {
     content_type = "text/cloud-config"
-    content = templatefile("${path.module}/bastion_cloud_config.yaml", var.key_pair)
+    content = templatefile("${path.module}/cloud_config.yaml", var.key_pair)
   }
 }
 
