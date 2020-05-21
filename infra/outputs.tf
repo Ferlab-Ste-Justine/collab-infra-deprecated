@@ -6,5 +6,5 @@ output "admin_ssh" {
 }
 
 output "bastion_external_ip" {
-    value = openstack_networking_floatingip_v2.bastion_ip.address
+    value = module.bastion.external_ip
 }
