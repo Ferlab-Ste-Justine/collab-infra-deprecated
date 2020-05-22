@@ -1,0 +1,7 @@
+[swarm_manager]
+${ swarm_manager_ip }
+
+[elasticsearch_nodes]
+%{ for ip in elasticsearch_ips ~}
+${ip}
+%{ endfor ~}

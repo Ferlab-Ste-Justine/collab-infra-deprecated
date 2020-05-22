@@ -3,5 +3,6 @@ terraform {
     required_providers {
         openstack = "~> 1.28"
         template = "~> 2.1"
+        null = "~> 2.1"
     }
 }

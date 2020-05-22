@@ -1,0 +1,23 @@
+---
+- name: Get join token
+  hosts: swarm_manager
+  tasks:
+    - command: docker swarm join-token -q worker
+      register: join_token
+      become: yes
+
+- name: Join the cluster
+  hosts: elasticsearch_nodes
+  tasks:
+    - command: "docker swarm join --token {{ hostvars[groups['swarm_manager'][0]]['join_token'].stdout }} {{ hostvars[groups['swarm_manager'][0]]['ansible_default_ipv4']['address'] }}:2377"
+      become: yes
+
+- name: Tag elasticsearch nodes
+  hosts: swarm_manager
+  tasks:
+    - shell: |
+        nodes=$(docker node ls -f name=elasticsearch-node -q)
+        for node in $nodes; do
+          docker node update --label-add node_role=elasticsearch $node
+        done
+      become: yes

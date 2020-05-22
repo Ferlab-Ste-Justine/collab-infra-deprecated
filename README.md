@@ -18,6 +18,7 @@ tenant_id = "..."
 application_credential_id = "..."
 application_credential_secret = "..."
 auth_url = "..."
+swarm_manager_ip = "..."
 ```
 
 **Do not commit this file either!** (it is in gitignore too)

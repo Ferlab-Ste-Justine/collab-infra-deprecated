@@ -22,3 +22,8 @@ variable "auth_url" {
     description = "Openstack Keystone auth url"
     type = string
 }
+
+variable "swarm_manager_ip" {
+    description = "Ip of a swarm manager"
+    type = string
+}

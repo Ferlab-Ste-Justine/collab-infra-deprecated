@@ -19,3 +19,11 @@ module "elasticsearch_cluster" {
   flavor = data.openstack_compute_flavor_v2.small
   image = data.openstack_images_image_v2.ubuntu_bionic
 }
+
+module "swarm_cluster" {
+  source = "./swarm_cluster"
+  elasticsearch_ips = module.elasticsearch_cluster.ips
+  bastion_ip = module.bastion.external_ip
+  swarm_manager_ip = var.swarm_manager_ip
+  key_pair = openstack_compute_keypair_v2.admin_keypair
+}
