@@ -18,6 +18,6 @@
     - shell: |
         nodes=$(docker node ls -f name=elasticsearch-node -q)
         for node in $nodes; do
-          docker node update --label-add node_role=elasticsearch $node
+          docker node update --label-add app_role=elasticsearch $node
         done
       become: yes

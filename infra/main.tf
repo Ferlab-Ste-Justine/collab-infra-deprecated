@@ -16,7 +16,7 @@ module "elasticsearch_cluster" {
   amount = 3
   network = data.openstack_networking_network_v2.network
   key_pair = openstack_compute_keypair_v2.admin_keypair
-  flavor = data.openstack_compute_flavor_v2.small
+  flavor = data.openstack_compute_flavor_v2.medium
   image = data.openstack_images_image_v2.ubuntu_bionic
 }
 
